@@ -1,4 +1,7 @@
-let keyProvider = ['5JUpswQJNATU3ne9xYfHxb8E37MPG1anzenvqoretTq2AENHi9Y', '5KQwrPbwdL6PhXujxW37FSSQZ1JiwsST4cqQzDeyXtP79zkvFD3', '5Kfj4gBpMYXq1aqkxfvmvfAfhTFynEusBUP7oY39fhLowhX8onF'];
+
+// your active private key of the slant account (private key of ActivePubKey that you used when creating the slant account (see README))
+let keyProvider = ['5JUpswQJNATU3ne9xYfHxb8E37MPG1anzenvqoretTq2AENHi9Y'];
+
 let eos = Eos.Localnet({keyProvider});
 
 let account = 'slant';

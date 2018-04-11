@@ -9,7 +9,7 @@ cleos set contract eosio ../eosio.bios -p eosio
 
 ## Deploy slant contracts
 ```
-cleos create account eosio slant ACTIVE_PUBKEY OWNER_PUBKEY
+cleos create account eosio slant OwnerPubKey ActivePubKey
 eosiocpp -o eos-poc.wast eos-poc.cpp
 eosiocpp -g eos-poc.abi eos-poc.cpp
 cleos set contract slant ../eos-poc
