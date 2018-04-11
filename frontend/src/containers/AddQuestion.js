@@ -15,10 +15,16 @@ const AddQuestion = ({ dispatch }) => {
           input.value = ''
         }}
       >
-        <input ref={node => input = node} />
-        <button type="submit">
-          Add Question
-        </button>
+          <div class="form-row">
+            <div class="col-10">
+              <input ref={node => input = node} class="form-control" />
+            </div>
+            <div class="col">
+              <button type="submit" class="btn btn-info">
+                Ask Question
+              </button>
+            </div>
+          </div>
       </form>
       </div>
   )
