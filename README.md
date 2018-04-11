@@ -4,9 +4,23 @@
 
 ## Backend
 
-### Set up eosio (install bios contract)
+### Prereqisites
+
+Make sure that you've installed EOS, its CLI-Tools and the Docker Node (see [](https://github.com/EOSIO/eos/wiki/Local-Environment)).
+
+### Start eos node
 ```
-cd build/contracts/eosio.bios
+nodeos -e -p eosio --plugin eosio::wallet_api_plugin --plugin eosio::chain_api_plugin --plugin eosio::account_history_api_plugin 
+```
+
+### Verify the node is running correctly
+```
+$ curl http://127.0.0.1:8888/v1/chain/get_info
+```
+
+### Install eos Bios Contract
+```
+cd <EOS_FOLDER>/build/contracts/eosio.bios
 cleos set contract eosio ../eosio.bios -p eosio
 ```
 
