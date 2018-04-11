@@ -12,7 +12,7 @@ cleos set contract eosio ../eosio.bios -p eosio
 cleos create account eosio slant ACTIVE_PUBKEY OWNER_PUBKEY
 eosiocpp -o slant.wast slant.cpp
 eosiocpp -g slant.abi slant.cpp
-cleos set contract slant ../slant
+cleos set contract slant ../eos-poc
 ```
 
 ## Add topic
