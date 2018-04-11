@@ -16,8 +16,10 @@ cleos set contract slant ../slant
 ```
 
 ## Add topic
-```cleos push action slant addtopic '["slant", "Sollte Grillen auf der Terrasse verboten werden?"]' -p slant
 ```
+cleos push action slant addtopic '["slant", "Sollte Grillen auf der Terrasse verboten werden?"]' -p slant
+```
+
 ## Check if topic was successfully added
 ```
 cleos get table slant slant topic
