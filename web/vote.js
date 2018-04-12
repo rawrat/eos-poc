@@ -1,11 +1,4 @@
 
-// your active private key of the slant account (private key of ActivePubKey that you used when creating the slant account (see README))
-let keyProvider = ['5JUpswQJNATU3ne9xYfHxb8E37MPG1anzenvqoretTq2AENHi9Y'];
-
-let eos = Eos.Localnet({keyProvider});
-
-let account = 'slant';
-let contract = 'slant';
 var question_id;
 function load_data() {
     // id of the question
