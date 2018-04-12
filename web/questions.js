@@ -2,7 +2,7 @@
 
 
 function load_table() {
-    eos.getTableRows({json:true, scope: account, code: contract,  table: 'topic'}).then(res => {
+    eos.getTableRows({json:true, scope: account, code: contract,  table: 'topic', limit:100}).then(res => {
         var table_rows = [];
         let rows = res.rows.filter(x => x.active);
         $.each(rows, function(index, row) {

@@ -3,7 +3,7 @@ var question_id;
 function load_data() {
     // id of the question
     question_id = getUrlParameter('id');
-    eos.getTableRows({json:true, scope: account, code: contract,  table: 'topic', table_key: question_id}).then(res => {
+    eos.getTableRows({json:true, scope: account, code: contract,  table: 'topic', table_key: question_id, limit:100}).then(res => {
         // filtering by table_key doesn't seem to work in current master, so we're filtering manually
         let row = get_row_by_key(res.rows, question_id);
 
