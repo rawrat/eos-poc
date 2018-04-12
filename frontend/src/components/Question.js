@@ -46,6 +46,7 @@ class Question extends Component {
             </div>
             <div class="col-3"> 
               <select class="form-control" onChange={ this.handleVoteSelect.bind(this) } >
+                <option selected disabled >Please choose...</option>
                 <option value="1">Yes</option>
                 <option value="0">No</option>
               </select>
