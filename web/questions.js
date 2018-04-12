@@ -6,7 +6,7 @@ function load_table() {
         var table_rows = [];
         let rows = res.rows.filter(x => x.active);
         $.each(rows, function(index, row) {
-            table_rows.push('<tr><td>' + row.question + '</td><td>' + row.votes_yes + '</td>' + '<td>' + row.votes_no + '</td>' + '<td><a href="#" class="delete" data-id="' + row.id + '">x</a>' + '</td>' + ' </tr>');
+            table_rows.push('<tr><td><a target="_new" href="vote.html?id=' + row.id + '">' + row.question + '</a></td><td>' + row.votes_yes + '</td>' + '<td>' + row.votes_no + '</td>' + '<td><a href="#" class="delete" data-id="' + row.id + '">x</a>' + '</td>' + ' </tr>');
         });
 
         $('table tbody').html(table_rows.join('\n'));
