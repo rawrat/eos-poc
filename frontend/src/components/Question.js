@@ -10,7 +10,9 @@ class Question extends Component {
       this.state = {
         question_id: this.props.data.id,
         reason: '',
-        yesno: ''
+        yesno: '',
+        yes: 0,
+        no: 0
       };
     }
 
@@ -21,7 +23,7 @@ class Question extends Component {
     handleVoteSelect(e) {
       this.setState({ yesno: e.target.value });
     }
-
+    
     render() {
     return (
       <form
@@ -51,6 +53,10 @@ class Question extends Component {
             <div class="col-2">
               <button class="btn btn-info btn-xs">Publish</button>
               </div>
+          </div>
+          <br/>
+          <div class="form-row">
+            <div class="col-12">{this.props.data.percentYes}% Yes&nbsp;&nbsp;|&nbsp;&nbsp;{this.props.data.percentNo}% No</div>
           </div>
           </div>
       </form>

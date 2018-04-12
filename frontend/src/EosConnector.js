@@ -11,8 +11,29 @@ let account = 'slant';
 let contract = 'slant';
 const EosConnector = {};
 
+
+function enhanceStats(rows) {
+    return rows.map((item) => {
+        let total = item.votes_yes + item.votes_no;
+        let yes = 0;
+        let no = 0;
+        if (total > 0) {
+            yes = ((item.votes_yes / total) * 100).toFixed(2);
+            no = ((item.votes_no / total) * 100).toFixed(2);
+        }
+        console.log("test:", item, total, yes, no);
+        item.percentYes = yes;
+        item.percentNo = no;
+        return item;
+    });
+}
+
 EosConnector.fetchQuestions = () => {
-    return eos.getTableRows({json:true, scope: account, code: contract,  table: 'topic', limit: 100 })
+    return eos.getTableRows({json:true, scope: account, code: contract,  table: 'topic', limit: 100 }).then(data => {
+        data.rows = enhanceStats(data.rows);
+        console.log('HELLO', data);
+        return Promise.resolve(data);
+    })
 }
 
 EosConnector.addQuestion = (question) => {
