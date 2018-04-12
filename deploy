@@ -3,10 +3,6 @@
 ACCOUNT=slant
 CONTRACT=eos-poc
 
-if [ -z "$NODEOS_HOST" ]; then
-    NODEOS_HOST="localhost"
-fi
-
 eosiocpp -o ${CONTRACT}.wast ${CONTRACT}.cpp &&
 eosiocpp -g ${CONTRACT}.abi ${CONTRACT}.cpp &&
-cleos -H $NODEOS_HOST --wallet-host $NODEOS_HOST set contract ${ACCOUNT} ../${CONTRACT}
+./cleos set contract ${ACCOUNT} ../${CONTRACT}
