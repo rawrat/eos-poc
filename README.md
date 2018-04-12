@@ -62,9 +62,12 @@ cleos set contract eosio ../eosio.bios -p eosio
 ### Deploy slant contracts
 ```
 cleos create account eosio slant EOS7VPcVaaYQkh8kEJRqRPR5mKMLPAhu7DCnTTkyoYoBrifBjc9gx EOS7VPcVaaYQkh8kEJRqRPR5mKMLPAhu7DCnTTkyoYoBrifBjc9gx
-eosiocpp -o slant.wast slant.cpp
-eosiocpp -g slant.abi slant.cpp
-cleos set contract slant ../slant
+./deploy
+```
+
+### Re-deploying changes to the contracts
+```
+./deploy
 ```
 
 ### Add topic
@@ -113,4 +116,3 @@ cd frontend && npm run build
 ```
 cd frontend && npm test
 ```
-
