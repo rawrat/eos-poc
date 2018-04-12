@@ -1,9 +1,25 @@
+import EosConnector from '../EosConnector';
+
 let nextQuestionId = 0
-export const addQuestion = text => ({
-  type: 'ADD_Question',
+export const addQuestion = question => ({
+  type: 'ADD_QUESTION',
   id: nextQuestionId++,
-  text
+  question
 })
+
+export const getQuestions = () => ({
+  type: 'GET_QUESTIONS'
+})
+
+export const fetchQuestions = () => {
+  return function(dispatch) {
+    EosConnector.fetchQuestions().then((data) => {
+      console.log("got questions", data);
+      window.Questions = data.rows;
+      dispatch(getQuestions())
+    });
+  }
+}
 
 export const setVisibilityFilter = filter => ({
   type: 'SET_VISIBILITY_FILTER',
@@ -11,7 +27,7 @@ export const setVisibilityFilter = filter => ({
 })
 
 export const toggleQuestion = id => ({
-  type: 'TOGGLE_Question',
+  type: 'ADD_QUESTION',
   id
 })
 

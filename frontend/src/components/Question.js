@@ -1,13 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-const Question = ({ onClick, completed, text }) => (
+const Question = ({ onClick, completed, text, question }) => (
   <li
     onClick={onClick}
     style={ {
       textDecoration: completed ? 'line-through' : 'none'
     }}
   >
-    {text}
+    {question}
   </li>
 )
 Question.propTypes = {

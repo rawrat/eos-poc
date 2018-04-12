@@ -10,6 +10,14 @@ Make sure that you've installed EOS, its CLI-Tools and the Docker Node (see [](h
 
 > Please also exchange the keys in the commands you generated.
 
+### Set CORS
+
+Edit the file _~/Library/Application\ Support/eosio/nodeos/config/config.ini_ in order to allow cors:
+
+```
+access-control-allow-origin = *
+```
+
 ### Start eos node
 ```
 nodeos -e -p eosio --plugin eosio::wallet_api_plugin --plugin eosio::chain_api_plugin --plugin eosio::account_history_api_plugin 
@@ -104,6 +112,10 @@ The frontend is written in react.
 ```
 cd frontend && npm start
 ```
+
+### Exchange the key private key
+
+Exchange the key in frontend/src/EosConnector.js with the one you generated above.
 
 ### Build the app into static files for production
 
