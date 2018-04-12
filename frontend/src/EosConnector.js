@@ -12,12 +12,10 @@ let contract = 'slant';
 const EosConnector = {};
 
 EosConnector.fetchQuestions = () => {
-    return eos.getTableRows({json:true, scope: account, code: contract,  table: 'topic'})
+    return eos.getTableRows({json:true, scope: account, code: contract,  table: 'topic', limit: 100 })
 }
 
-EosConnector.addQuestion = () => {
-    const question = "hello world";
-    console.log("add question", question);
+EosConnector.addQuestion = (question) => {
     return eos.transaction({
         actions: [
             {
@@ -34,6 +32,28 @@ EosConnector.addQuestion = () => {
             }
         ]
     })
+}
+
+EosConnector.addVote = (vote) => {
+    console.log("vote", vote);
+    return eos.transaction({
+      actions: [
+        {
+          account: account,
+          name: 'castvote',
+          authorization: [{
+            actor: account,
+            permission: 'active'
+          }],
+          data: {
+            topic_id: vote.question_id,
+            author: "Anonymous",
+            yesno: parseInt(vote.yesno, 10),
+            reason: vote.reason
+          }
+        }
+      ]
+    });
 }
 
 export default EosConnector;

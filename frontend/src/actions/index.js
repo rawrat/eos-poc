@@ -1,11 +1,20 @@
 import EosConnector from '../EosConnector';
 
-export const addQuestion = question => {
+  export const addQuestion = question => {
+    return function(dispatch) {
+      EosConnector.addQuestion(question)
+      .then(() => {
+          dispatch(fetchQuestions())
+      });
+      
+    }
+  }
+
+export const addVote = vote => {
   return function(dispatch) {
-    EosConnector.addQuestion()
+    EosConnector.addVote(vote)
     .then(() => {
-        alert("added");
-        dispatch(getQuestions())
+        dispatch(fetchQuestions())
     });
     
   }

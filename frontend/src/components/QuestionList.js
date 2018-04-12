@@ -6,7 +6,7 @@ const QuestionList = ({ Questions, toggleQuestion }) => (
     {Questions.map(question =>
       <Question
         key={question.id}
-        object={question}
+        data={question}
         {...question}
         onClick={() => toggleQuestion(question.id)}
       />

@@ -5,28 +5,12 @@ window.Questions = [];
 const Questions = (state = [], action) => {
     console.log("action", action)  
     switch (action.type) {
-      case 'ADD_QUESTION':
-        return [
-          ...state,
-          {
-            id: action.id,
-            question: action.question,
-            completed: false
-          }
-        ]
-      case 'TOGGLE_QUESTION':
-        return state.map(Question =>
-          (Question.id === action.id)
-            ? {...Question, completed: !Question.completed}
-            : Question
-        )
-      case 'FETCH_QUESTIONS':
-        return [ ...state ];
       case 'GET_QUESTIONS':
-        return [
-          ...state,
+        const data = [
           ...window.Questions
         ];
+        console.log("data", data);
+        return data
       default:
         return state
     }
