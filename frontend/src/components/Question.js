@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import store from '../store'
-import { addVote } from '../actions'
+import { addVote, removeQuestion } from '../actions'
 
 class Question extends Component {
     constructor(props) {
@@ -22,6 +22,10 @@ class Question extends Component {
  
     handleVoteSelect(e) {
       this.setState({ yesno: e.target.value });
+    }
+
+    removeQuestion(e) {
+      store.dispatch(removeQuestion(this.props.data.id))
     }
     
     render() {
@@ -56,7 +60,8 @@ class Question extends Component {
           </div>
           <br/>
           <div class="form-row">
-            <div class="col-12">{this.props.data.percentYes}% Yes&nbsp;&nbsp;|&nbsp;&nbsp;{this.props.data.percentNo}% No</div>
+            <div class="col-10">{this.props.data.percentYes}% Yes&nbsp;&nbsp;|&nbsp;&nbsp;{this.props.data.percentNo}% No</div>
+            <div class="col-2"><a href="#" class="danger" onClick={ this.removeQuestion.bind(this) }>Remove Question</a></div>
           </div>
           </div>
       </form>

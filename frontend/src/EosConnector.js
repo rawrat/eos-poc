@@ -79,4 +79,23 @@ EosConnector.addVote = (vote) => {
     });
 }
 
+EosConnector.removeQuestion = (questionId) => {
+    return eos.transaction({
+        actions: [
+          {
+            account: account,
+            name: 'removetopic',
+            authorization: [{
+              actor: account,
+              permission: 'active'
+            }],
+            data: {
+              sender: account,
+              topic_id: questionId
+            }
+          }
+        ]
+    })
+}
+
 export default EosConnector;

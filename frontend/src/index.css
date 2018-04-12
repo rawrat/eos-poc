@@ -10,3 +10,12 @@ body {
   padding: 2% 0;
   font-size: 22px
 }
+
+.danger {
+  color: red;
+  font-size: 14px
+}
+.danger:hover {
+  text-decoration: underline;
+  color: red
+}
