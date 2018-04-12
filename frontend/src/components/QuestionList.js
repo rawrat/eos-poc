@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Question from './Question'
 const QuestionList = ({ Questions, toggleQuestion }) => (
-  <ul>
+  <div>
     {Questions.map(question =>
       <Question
         key={question.id}
@@ -11,7 +11,7 @@ const QuestionList = ({ Questions, toggleQuestion }) => (
         onClick={() => toggleQuestion(question.id)}
       />
     )}
-  </ul>
+  </div>
 )
 QuestionList.propTypes = {
   Questions: PropTypes.arrayOf(
@@ -22,8 +22,5 @@ QuestionList.propTypes = {
     }).isRequired
   ).isRequired,
   toggleQuestion: PropTypes.func.isRequired
-}
-QuestionList.componentDidMount = () => {
-  console.log("TEST dadsds")
 }
 export default QuestionList

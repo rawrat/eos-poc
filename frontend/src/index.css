@@ -5,6 +5,8 @@ body {
 }
 
 .question {
+  margin-top: 10px;
+  border-bottom: 1px #ddd solid;
   padding: 2% 0;
   font-size: 22px
 }
