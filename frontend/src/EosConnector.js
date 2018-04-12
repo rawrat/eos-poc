@@ -2,7 +2,7 @@
 import $ from 'jquery';
 
 // your active private key of the slant account (private key of ActivePubKey that you used when creating the slant account (see README))
-let keyProvider = ['5HrPkye4vSeMzUhuT8oYNKNbKjTd3Dh2yxkQsBBkH8sJkeUR78Q'];
+let keyProvider = ['5JUpswQJNATU3ne9xYfHxb8E37MPG1anzenvqoretTq2AENHi9Y'];
 
 let httpEndpoint = 'http://angelos-eos-testnet.drrrive.com:8888';
 // let httpEndpoint = 'http://localhost:8888';
