@@ -30,9 +30,15 @@ function enhanceStats(rows) {
     });
 }
 
+function filterInactive(rows) {
+    return rows.filter((item) => {
+        return item.active
+    });
+}
+
 EosConnector.fetchQuestions = () => {
     return eos.getTableRows({json:true, scope: account, code: contract,  table: 'topic', limit: 100 }).then(data => {
-        data.rows = enhanceStats(data.rows);
+        data.rows = filterInactive(enhanceStats(data.rows));
         console.log('HELLO', data);
         return Promise.resolve(data);
     })

@@ -12,7 +12,8 @@ class Question extends Component {
         reason: '',
         yesno: '',
         yes: 0,
-        no: 0
+        no: 0,
+        disabled: true
       };
     }
 
@@ -21,7 +22,7 @@ class Question extends Component {
     }
  
     handleVoteSelect(e) {
-      this.setState({ yesno: e.target.value });
+      this.setState({ yesno: e.target.value, disabled: false });
     }
 
     removeQuestion(e) {
@@ -55,7 +56,7 @@ class Question extends Component {
               <input type="text" class="form-control" onChange={ this.handleChange.bind(this) } />
             </div>
             <div class="col-2">
-              <button class="btn btn-info btn-xs">Publish</button>
+              <button class="btn btn-info btn-xs" disabled={this.state.disabled}>Publish</button>
               </div>
           </div>
           <br/>
