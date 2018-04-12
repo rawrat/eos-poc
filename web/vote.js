@@ -21,7 +21,7 @@ function load_data() {
 
         $('span.votes_yes').text(decimal_to_percent_rounded(yes) + "% Ja");
         $('span.votes_no').text(decimal_to_percent_rounded(no) + "% Nein");
-
+        $('span.n_votes').text(total);
         console.log(row.question);
     });
 }
