@@ -24,7 +24,21 @@ class slant : public contract {
                 topic.question = question;
                 topic.votes_yes = 0;
                 topic.votes_no = 0;
+                topic.active = 1;
             });
+        };
+
+        //@abi action
+        void removetopic(name sender, uint64_t topic_id) {
+            // only owner of contract can add topics
+            require_auth(_self);
+
+            auto topics_itr = topics.find(topic_id);
+            eosio_assert(topics_itr != topics.end(), "Invalid topic id");
+            topics.modify(topics_itr, 0, [&](auto &topic) {
+                topic.active = 0;
+            });
+
         };
 
         //@abi action
@@ -56,9 +70,10 @@ class slant : public contract {
             string      question;
             uint64_t    votes_yes;
             uint64_t    votes_no;
+            uint8_t     active;
 
             uint64_t primary_key()const { return id; }
-            EOSLIB_SERIALIZE(topic, (id)(question)(votes_yes)(votes_no))
+            EOSLIB_SERIALIZE(topic, (id)(question)(votes_yes)(votes_no)(active))
         };
         typedef multi_index<N(topic), topic> topic_index;
         topic_index topics;
@@ -77,4 +92,4 @@ class slant : public contract {
         typedef multi_index<N(vote), vote> vote_index;
         vote_index votes;
 };
-EOSIO_ABI(slant, (addtopic)(castvote));
+EOSIO_ABI(slant, (addtopic)(removetopic)(castvote));

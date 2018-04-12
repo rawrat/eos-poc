@@ -4,11 +4,34 @@
 function load_table() {
     eos.getTableRows({json:true, scope: account, code: contract,  table: 'topic'}).then(res => {
         var table_rows = [];
-        $.each(res.rows, function(index, row) {
-            table_rows.push('<tr><td>' + row.question + '</td><td>' + row.votes_yes + '</td>' + '<td>' + row.votes_no + '</td>' + ' </tr>');
+        let rows = res.rows.filter(x => x.active);
+        $.each(rows, function(index, row) {
+            table_rows.push('<tr><td>' + row.question + '</td><td>' + row.votes_yes + '</td>' + '<td>' + row.votes_no + '</td>' + '<td><a href="#" class="delete" data-id="' + row.id + '">x</a>' + '</td>' + ' </tr>');
         });
 
         $('table tbody').html(table_rows.join('\n'));
+        $('a.delete').click(function(event) {
+          event.preventDefault();
+          console.log("ohai " + $(event.target).data().id );
+          eos.transaction({
+            actions: [
+              {
+                account: account,
+                name: 'removetopic',
+                authorization: [{
+                  actor: account,
+                  permission: 'active'
+                }],
+                data: {
+                  sender: account,
+                  topic_id: $(event.target).data().id
+                }
+              }
+            ]
+        }).then(x => {
+            load_table();
+        });
+        })
     });
 }
 
