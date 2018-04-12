@@ -80,6 +80,7 @@ EosConnector.addVote = (vote) => {
 }
 
 EosConnector.removeQuestion = (questionId) => {
+    console.log("remove question", questionId)
     return eos.transaction({
         actions: [
           {
