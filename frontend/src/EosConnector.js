@@ -12,7 +12,27 @@ let contract = 'slant';
 const EosConnector = {};
 
 EosConnector.fetchQuestions = () => {
-    return eos.getTableRows({json:true, scope: account, code: contract,  table: 'topic', mode: 'no-cors'})
+    return eos.getTableRows({json:true, scope: account, code: contract,  table: 'topic'})
+}
+
+EosConnector.addQuestion = (question) => {
+    console.log("add question", question);
+    return eos.transaction({
+        actions: [
+            {
+                account: account,
+                name: 'addtopic',
+                authorization: [{
+                    actor: account,
+                    permission: 'active'
+                }],
+                data: {
+                    sender: account,
+                    question: question
+                }
+            }
+        ]
+    })
 }
 
 export default EosConnector;

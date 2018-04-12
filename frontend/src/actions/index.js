@@ -1,11 +1,14 @@
 import EosConnector from '../EosConnector';
 
 let nextQuestionId = 0
-export const addQuestion = question => ({
-  type: 'ADD_QUESTION',
-  id: nextQuestionId++,
-  question
-})
+export const addQuestion = question => {
+  return function(dispatch) {
+    EosConnector.addQuestion(question).then(() => {
+        alert("added");
+        dispatch(getQuestions())
+    });
+  }
+}
 
 export const getQuestions = () => ({
   type: 'GET_QUESTIONS'
