@@ -6,6 +6,7 @@ const QuestionList = ({ Questions, toggleQuestion }) => (
     {Questions.map(question =>
       <Question
         key={question.id}
+        object={question}
         {...question}
         onClick={() => toggleQuestion(question.id)}
       />
@@ -21,5 +22,8 @@ QuestionList.propTypes = {
     }).isRequired
   ).isRequired,
   toggleQuestion: PropTypes.func.isRequired
+}
+QuestionList.componentDidMount = () => {
+  console.log("TEST dadsds")
 }
 export default QuestionList

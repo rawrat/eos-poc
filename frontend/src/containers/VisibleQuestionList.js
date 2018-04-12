@@ -2,6 +2,7 @@ import { connect } from 'react-redux'
 import { toggleQuestion } from '../actions'
 import QuestionList from '../components/QuestionList'
 const getVisibleQuestions = (Questions, filter) => {
+  console.log("get visible questions", Questions)
   switch (filter) {
     case 'SHOW_COMPLETED':
       return Questions.filter(t => t.completed)
