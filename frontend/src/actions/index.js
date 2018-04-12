@@ -2,10 +2,28 @@ import EosConnector from '../EosConnector';
 
 export const addQuestion = question => {
   return function(dispatch) {
-    EosConnector.addQuestion()
+    EosConnector.addQuestion(question)
     .then(() => {
-        alert("added");
-        dispatch(getQuestions())
+        dispatch(fetchQuestions())
+    });
+    
+  }
+}
+
+export const removeQuestion = questionId => {
+  return function(dispatch) {
+    EosConnector.removeQuestion(questionId)
+    .then(() => {
+        dispatch(fetchQuestions())
+    });
+  }
+}
+
+export const addVote = vote => {
+  return function(dispatch) {
+    EosConnector.addVote(vote)
+    .then(() => {
+        dispatch(fetchQuestions())
     });
     
   }
