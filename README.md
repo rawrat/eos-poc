@@ -6,7 +6,7 @@
 
 ### Prereqisites
 
-Make sure that you've installed EOS, its CLI-Tools and the Docker Node (see [](https://github.com/EOSIO/eos/wiki/Local-Environment)).
+Make sure that you've installed EOS, its CLI-Tools and the Docker Node (see [https://github.com/EOSIO/eos/wiki/Local-Environment](https://github.com/EOSIO/eos/wiki/Local-Environment)).
 
 > Please also exchange the keys in the commands you generated.
 
