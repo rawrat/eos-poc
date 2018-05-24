@@ -1,6 +1,7 @@
-
-
 # eos-poc
+
+The current state of the frontend and the eos chain can be accessed here: [http://ipfs.drrrive.com:8080/ipfs/QmZ6tkDgbDgoiruX6HPWtrYLzbQiDQ6zNvA9H6JJMtYv1Q/#](http://ipfs.drrrive.com:8080/ipfs/QmZ6tkDgbDgoiruX6HPWtrYLzbQiDQ6zNvA9H6JJMtYv1Q/#)
+
 
 ## Backend
 
