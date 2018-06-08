@@ -5,4 +5,4 @@ CONTRACT=eos-poc
 
 eosiocpp -o ${CONTRACT}.wast ${CONTRACT}.cpp &&
 eosiocpp -g ${CONTRACT}.abi ${CONTRACT}.cpp &&
-./cleos set contract ${ACCOUNT} ../${CONTRACT}
+cleos set contract ${ACCOUNT} ../${CONTRACT}

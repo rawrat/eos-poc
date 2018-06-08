@@ -1,2 +1,4 @@
 /eos-poc.wast
 /eos-poc.abi
+.DS_Store
+*.wasm

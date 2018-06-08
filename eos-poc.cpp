@@ -35,9 +35,7 @@ class slant : public contract {
 
             auto topics_itr = topics.find(topic_id);
             eosio_assert(topics_itr != topics.end(), "Invalid topic id");
-            topics.modify(topics_itr, 0, [&](auto &topic) {
-                topic.active = 0;
-            });
+            topics.erase(topics_itr);
 
         };
 
@@ -83,7 +81,7 @@ class slant : public contract {
             uint64_t    id;
             uint64_t    topic_id;
             string      author;
-            uint8_t     yesno;
+            bool     yesno;
             string      reason;
 
             uint64_t primary_key()const { return id; }

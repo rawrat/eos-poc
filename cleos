@@ -1,7 +1,0 @@
-#!/bin/sh
-
-if [ -z "$NODEOS_HOST" ]; then
-    NODEOS_HOST="localhost"
-fi
-
-/usr/bin/env cleos -H $NODEOS_HOST --wallet-host $NODEOS_HOST $@
