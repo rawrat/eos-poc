@@ -1,6 +1,7 @@
 #include <eosiolib/eosio.hpp>
 #include <eosiolib/print.hpp>
 #include <eosiolib/transaction.hpp>
+#include <eosiolib/asset.hpp>
 
 using namespace eosio;
 using namespace std;
@@ -17,6 +18,10 @@ class slant : public contract {
         {}
 
         const uint32_t CREDITING_BATCH_SIZE = 10;
+        const uint8_t PRECISION = 4;
+        const symbol_name SLANT_SYMBOL = S(PRECISION, SLANT);
+        const asset TOKENS_PER_VOTE = asset(10000, SLANT_SYMBOL); // 1 SLANT
+        
         
         //@abi action
         void addtopic(account_name sender, string question) {
@@ -85,7 +90,7 @@ class slant : public contract {
                 action(
                     permission_level{ sender, N(active) },
                     N(slant.token), N(issue),
-                    std::make_tuple(item.author, string("1.0000 SLANT"), string("Thank you for voting"))
+                    std::make_tuple(item.author, TOKENS_PER_VOTE, string("Thank you for voting"))
                  ).send();
                  
                  
