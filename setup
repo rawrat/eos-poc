@@ -16,3 +16,5 @@ cleos create account eosio peter EOS6dcmgAB4zp8KMwHau2pNFdTt4uYT9mpjgmLwuJUFrxzR
 cleos set contract slant.token /Users/al/Projects/eos/eos/build/contracts/eosio.token
 
 cleos push action slant.token create '{"issuer":"slant", "maximum_supply":"1000000000.0000 SLANT"}' -p slant.token
+
+cleos set account permission slant active '{"threshold": 1,"keys": [{"key": "EOS6dcmgAB4zp8KMwHau2pNFdTt4uYT9mpjgmLwuJUFrxzRcxqo83","weight": 1}],"accounts": [{"permission":{"actor":"slant","permission":"eosio.code"},"weight":1}]}' owner
