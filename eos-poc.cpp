@@ -70,28 +70,29 @@ class slant : public contract {
             require_auth(_self);
             auto credited_idx = votes.template get_index<N(by_credited)>();
             
-            
+            std::vector<vote> l;
             uint32_t count = 0;
-            for( const auto& item : credited_idx ) {                
+            for( const auto& item : credited_idx ) {     
                 if(count > CREDITING_BATCH_SIZE || item.credited) {
                     break;
                 }
+                l.push_back(item);
+                count++;                 
+            }
+            
+            for (vote item : l) {
                 
                 action(
-                    permission_level{ _self, N(active) },
+                    permission_level{ sender, N(active) },
                     N(slant.token), N(issue),
-                    std::make_tuple(item.author, std::string("1.0000 SLANT"))
+                    std::make_tuple(item.author, string("1.0000 SLANT"), string("Thank you for voting"))
                  ).send();
                  
                  
-                 votes.modify(item, 0, [&](auto &vote) {
+                 votes.modify(votes.find(item.id), 0, [&](auto &vote) {
                      vote.credited = true;
                  });
-                 
-                 
-                 count++;
-                 
-            };
+            }
 
                     
         }
