@@ -1,0 +1,18 @@
+#!/bin/sh 
+
+cleos wallet unlock --password PW5JYDmuCwczbmDhg7CHQWYU3agKxm2xSmWQjJRpqnWcRoBimEFb5
+
+cleos set contract eosio /Users/al/Projects/eos/eos/build/contracts/eosio.bios
+
+cleos create account eosio slant EOS6dcmgAB4zp8KMwHau2pNFdTt4uYT9mpjgmLwuJUFrxzRcxqo83 EOS6dcmgAB4zp8KMwHau2pNFdTt4uYT9mpjgmLwuJUFrxzRcxqo83
+
+cleos create account eosio angelo EOS6dcmgAB4zp8KMwHau2pNFdTt4uYT9mpjgmLwuJUFrxzRcxqo83 EOS6dcmgAB4zp8KMwHau2pNFdTt4uYT9mpjgmLwuJUFrxzRcxqo83
+
+cleos create account eosio slant.token EOS6dcmgAB4zp8KMwHau2pNFdTt4uYT9mpjgmLwuJUFrxzRcxqo83 EOS6dcmgAB4zp8KMwHau2pNFdTt4uYT9mpjgmLwuJUFrxzRcxqo83
+
+
+cleos create account eosio peter EOS6dcmgAB4zp8KMwHau2pNFdTt4uYT9mpjgmLwuJUFrxzRcxqo83 EOS6dcmgAB4zp8KMwHau2pNFdTt4uYT9mpjgmLwuJUFrxzRcxqo83
+
+cleos set contract slant.token /Users/al/Projects/eos/eos/build/contracts/eosio.token
+
+cleos push action slant.token create '{"issuer":"slant", "maximum_supply":"1000000000.0000 SLANT"}' -p slant.token

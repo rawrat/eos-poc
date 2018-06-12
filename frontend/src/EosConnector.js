@@ -75,6 +75,7 @@ EosConnector.addVote = (vote) => {
             permission: 'active'
           }],
           data: {
+            sender: "angelo",
             topic_id: vote.question_id,
             author: "Anonymous",
             yesno: parseInt(vote.yesno, 10),
