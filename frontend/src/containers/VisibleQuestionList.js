@@ -1,6 +1,8 @@
 import { connect } from 'react-redux'
 import { toggleQuestion } from '../actions'
 import QuestionList from '../components/QuestionList'
+import { withRouter } from 'react-router-dom'
+
 const getVisibleQuestions = (Questions, filter) => {
   console.log("get visible questions", Questions)
   switch (filter) {
@@ -19,7 +21,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   toggleQuestion: id => dispatch(toggleQuestion(id))
 })
-export default connect(
+export default withRouter(connect(
   mapStateToProps,
   mapDispatchToProps
-)(QuestionList)
+)(QuestionList))

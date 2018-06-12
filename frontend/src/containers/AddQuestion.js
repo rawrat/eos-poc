@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import store from '../store'
 import { addQuestion, fetchQuestions } from '../actions'
+import { withRouter } from 'react-router-dom'
 
 class AddQuestion extends Component {
   componentDidMount () {
@@ -38,4 +39,4 @@ class AddQuestion extends Component {
   }
 }
 
-export default connect()(AddQuestion)
+export default withRouter(connect()(AddQuestion))

@@ -10,12 +10,22 @@ import { createStore } from 'redux';
 import rootReducer from './reducers';
 import store from './store';
 import App from './components/App';
-render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
-  document.getElementById('root')
-)
+import { BrowserRouter } from 'react-router-dom'
 
-//ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render((
+  <Provider store={store}>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </Provider>
+), document.getElementById('root'))
+//
+// render(
+//   <Provider store={store}>
+//     <App />
+//   </Provider>,
+//   document.getElementById('root')
+// )
+
+// ReactDOM.render(<App />, document.getElementById('root'));
 registerServiceWorker();
