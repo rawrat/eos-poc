@@ -6,6 +6,10 @@
 using namespace eosio;
 using namespace std;
 
+uint128_t combine_ids(const uint64_t &x, const uint64_t &y) {
+    return (uint128_t{x} << 64) | y;
+}
+
 class slant : public contract {
     using contract::contract;
     
@@ -52,6 +56,11 @@ class slant : public contract {
         void castvote(account_name sender, uint64_t topic_id, uint8_t yesno, string reason) {
             auto topics_itr = topics.find(topic_id);
             eosio_assert(topics_itr != topics.end(), "Invalid topic id ");
+            
+            auto topic_author_idx = votes.template get_index<N(topic_author)>();
+            auto topic_author_itr = topic_author_idx.find(combine_ids(topic_id, sender));
+            eosio_assert(topic_author_itr == topic_author_idx.end(), "Author already voted");
+            
             topics.modify(topics_itr, 0, [&](auto &topic) {
                 if(yesno) {
                     topic.votes_yes++;
@@ -104,6 +113,8 @@ class slant : public contract {
 
 
     private:
+        
+        
         // @abi table topic i64
         struct topic {
             uint64_t    id;
@@ -129,10 +140,12 @@ class slant : public contract {
 
             uint64_t primary_key()const { return id; }
             uint64_t bycredited() const { return credited; }
+            uint128_t topicauthor() const { return combine_ids(topic_id, author); }
             EOSLIB_SERIALIZE(vote, (id)(topic_id)(author)(yesno)(reason)(credited))
         };
         typedef multi_index<N(vote), vote,
-            indexed_by< N(by_credited), const_mem_fun<vote, uint64_t,  &vote::bycredited> >
+            indexed_by< N(by_credited), const_mem_fun<vote, uint64_t,  &vote::bycredited> >,
+            indexed_by< N(topic_author), const_mem_fun<vote, uint128_t,  &vote::topicauthor> >
         > vote_index;
         vote_index votes;
 };
